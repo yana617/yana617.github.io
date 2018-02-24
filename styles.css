@@ -91,12 +91,12 @@ header{
     top: 15px;
 }
 @media (max-width: 700px) {
-    #userName{width: 22%;}
-    #addPhoto{width: 56%;}
+    #userName{width: 20%;}
+    #addPhoto{width: 60%;}
     #userNameFull{display: none;}
     #userNameShort{right:10px;}
     .icon {left: 15px;} 
-    #logo{width: 22%; }
+    #logo{width: 20%; }
     .addButton{width: 100%;}
     #logoText{display: none;}
   }
