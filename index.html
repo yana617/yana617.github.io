@@ -10,11 +10,11 @@
 <body>
     <header>
         <div id="logo">
-            <div class="icon"><img src="icon.jpg"></div>
+            <div id="icon"><img src="icon.jpg"></div>
             <span id="logoText">PhotoCloud</span>
         </div>
         <div id="addPhoto">
-            <div class="addButton">Добавить фото</div>
+            <a id="addButton" href="#">Добавить фото</a>
         </div>
         <div id="userName">
             <div id="userNameShort">YP</div>
@@ -24,24 +24,39 @@
     <div id="search">
         <div class="searchAuthorHashtag">
             <input type="text" placeholder="Автор">
-            <input type="text" placeholder="Хэштег">
+            <input type="text" placeholder="Хэштеги">
                 
         </div>
         <div class="searchData">
-            <input type="text" placeholder="ДД.ММ.ГГ">
-            <input type="text" placeholder="ДД.ММ.ГГ">
+            <span class="inputDataText">От: </span><input type="text" placeholder="ДД.ММ.ГГ">
+            <span class="inputDataText">До: </span><input type="text" placeholder="ДД.ММ.ГГ">
         </div>
         <button type="submit"></button>
     </div>
-    </div>
     <div id="content">
         <div class="post">
+            <div class="image"><img src="IMGP2622.jpg" class="imagePosition"></div>
+            <div class="imageOwnerDataInfo"><span class="userNameLabel">YanPark</span><span class="PhotoUploadDataLabel">25.02.2018</span></div>
+            <div class="imageText"></div>
+        </div>
+        <div class="post">
             
         </div>
         <div class="post">
             
         </div>
+        <div class="post">
+            
+        </div>
+        <div class="post">
+            
+        </div>
+        <div class="post">
+            
+        </div>
+        
     </div>
+    <button id="LoadMoreButton">Загрузить еще</button>
     <footer>
 
     </footer>
