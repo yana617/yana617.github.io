@@ -105,6 +105,7 @@ header{
     position: fixed;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     background-color: white;
     border-bottom-color: blanchedalmond;  
     
@@ -117,7 +118,7 @@ header{
     align-items: center;
     align-content: center; 
     justify-content: center;
-    margin-left: 20%;
+    /* margin-left: 20%; */
 }
 .searchAuthorHashtag input {
     width: 45%;
@@ -238,13 +239,10 @@ header{
     font-family: 'Montserrat', sans-serif;
     font-size: 11px;
     text-transform: uppercase;
-    text-align: center;
     letter-spacing: 3px;
     font-weight: 600;
-    /* color: #524f4e; */
     color: black;
     background:lightcyan;
-    /* background: white; */
     box-shadow: 0 8px 15px rgba(0,0,0,.1);
     transition: .3s;
 }
@@ -258,8 +256,9 @@ header{
 footer{
 
 }
-
-
+@media(max-width:500px){
+    .post{height: 400px;}
+}
 @media (max-width: 700px) {
     #logo{width: 15%; }
     #userName{width: 15%;}
@@ -269,15 +268,15 @@ footer{
     #icon {left: 15px;} 
     #addButton{width: 100%;}
     #logoText{display: none;}
-    .post{height: 500px;}
   }
 @media (max-width: 830px){
     #addButton{width: 85%;}
     #logo{padding-left: 70px;}
     #icon{left: 20px;}
-    .searchData{width: 35%;}
-    .searchAuthorHashtag{margin-left: 0%; width: 65%;}
+    .searchAuthorHashtag{width: 60%;}
+    .searchData{width: 30%;}
     .inputDataText{display: none;} 
+    #search button {left: 5px;}
   }
   @media(max-width:1150px){
       .searchData{width: 20%;}
