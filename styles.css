@@ -4,6 +4,7 @@ body{
     align-items: center;
     align-content: center; 
     justify-content: center;
+    margin: 0px;
 }
 header{
     background-color: whitesmoke;
@@ -192,44 +193,49 @@ header{
     justify-content: center;
 }
 .post{
-    width: 500px;
-    height: 600px;
+    width: 400px;
+    max-height: 600px;
+    min-height: 350px;
     border: 2px solid silver;
     margin: 10px;
     border-radius: 0 0 20px 20px;
     display: flex;
+    align-content: center;
     justify-content: center;
     flex-direction: column;
-}
-.image{
-    display: flex;
-    width:100%;
-    height: 80%;
-    background-color: aliceblue;
+    box-sizing: border-box;
 }
 .imagePosition{
     display: flex;
     max-width: 100%;
-    max-height: 100%;
+    max-height: 400px;
     align-self: center;
-    justify-content: space-between;
     align-items: center;
 }
 .imageOwnerDataInfo{
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     width: 100%;
-    height: 20%;
+    height: 30px;
+    color: white;
+    background-color: cadetblue;
     padding-left: 10px;
     padding-right: 10px; 
+    font-family: cursive;
+    font-size: 15px;
 }
-.userNameLabel{
-    float: left;
-}
-.PhotoUploadDataLabel{
-    float: right;
+.imageText{
+    width: 96%;
+    height: auto;
+    border: silver 2px dotted;
+    border-radius: 10px; 
+    justify-content: center;
+    padding: 5px; 
+    margin: 7px;
 }
 
-#LoadMoreButton{
+#loadMoreButton{
     outline: none;
     width: 200px;
     height: 45px;
@@ -246,7 +252,7 @@ header{
     box-shadow: 0 8px 15px rgba(0,0,0,.1);
     transition: .3s;
 }
-#LoadMoreButton:hover{
+#loadMoreButton:hover{
     background: #2EE59D;
     box-shadow: 0 15px 20px rgba(46,229,157,.4);
     color: white;
@@ -254,11 +260,28 @@ header{
 }
 
 footer{
+    height: 70px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: whitesmoke;
+    line-height: 0.3;
+    font-family: Century Gothic;
+    font-size: 15px;
+}
+#copyright{
+    width: 50%;
+    padding-left: 10px;
+    justify-content: center; 
+}
+#editorInfo{
+    width: 50%;
+    text-align: end;
+    padding-right: 10px; 
+    margin: 0;
+}
+.footerText2{display: none;}
 
-}
-@media(max-width:500px){
-    .post{height: 400px;}
-}
 @media (max-width: 700px) {
     #logo{width: 15%; }
     #userName{width: 15%;}
@@ -268,6 +291,9 @@ footer{
     #icon {left: 15px;} 
     #addButton{width: 100%;}
     #logoText{display: none;}
+    footer{font-size: 13px;}
+    .footerText2{display: block;}
+    .footerText1{display: none;}
   }
 @media (max-width: 830px){
     #addButton{width: 85%;}
