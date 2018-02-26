@@ -326,7 +326,7 @@ footer{
     .logoText{display: none;}
     footer{font-size: 13px;}
     .footerText2{display: block;}
-    .footerText1{display: none;}
+    .footerText1{display: none;}    
   }
 @media (max-width: 830px){
     .addButton{width: 70%; font-size: 20px;}
@@ -339,6 +339,10 @@ footer{
     .userNameFull{display: none;}
     .userNameShort{right:50px;}
   }
+@media(max-width:860px){
+    .post{max-height: none;}
+    .imagePosition{max-height: none;}
+}
 @media(max-width:1150px){
     .searchData{width: 20%;}
   }
