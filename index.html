@@ -3,7 +3,8 @@
 
 <head>
     <title>PhotoCloud</title>
-    <link rel="stylesheet" href="styles.css" type="text/css" />
+    <script src="js/index.js"></script>
+    <link rel="stylesheet" href="css/styles.css" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +15,7 @@
     <header>
         <div class="logo">
             <div class="icon">
-                <img src="icon.jpg">
+                <img src="img/icon.jpg">
             </div>
             <span class="logoText">PhotoCloud</span>
         </div>
@@ -31,15 +32,14 @@
     </header>
     <div class="search">
         <div class="searchAuthorHashtag">
-            <input type="text" placeholder="Автор">
-            <input type="text" placeholder="Хэштеги">
-
+            <input type="text" maxlength="50" placeholder="Автор" class="inputs">
+            <input type="text" maxlength="50" placeholder="Хэштеги" class="inputs">
         </div>
-        <div class="searchData">
-            <span class="inputDataText">От: </span>
-            <input type="text" placeholder="ДД.ММ.ГГ">
-            <span class="inputDataText">До: </span>
-            <input type="text" placeholder="ДД.ММ.ГГ">
+        <div class="searchDate">
+            <i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
+            <div class="inputDate">
+                <input maxlength="20" type="date">
+            </div>
         </div>
         <button type="submit"></button>
     </div>
@@ -53,7 +53,7 @@
                     <i class="fa fa-trash-o iDelete fa-2x" aria-hidden="true"></i>
                 </a>
             </div>
-            <img class="imagePosition" src="IMGP2620.jpg" alt="photo">
+            <img class="imagePosition" src="img/IMGP2620.jpg" alt="photo">
             <div class="imageOwnerDataInfo">
                 <span class="userNameLabel">YanPark | 25.02.18</span>
                 <i class="fa fa-heart-o fa-2x" aria-hidden="true">2</i>
@@ -71,7 +71,7 @@
                     <i class="fa fa-trash-o iDelete fa-2x" aria-hidden="true"></i>
                 </a>
             </div>
-            <img class="imagePosition" src="IMGP2622.jpg" alt="photo">
+            <img class="imagePosition" src="img/IMGP2622.jpg" alt="photo">
             <div class="imageOwnerDataInfo">
                 <span class="userNameLabel">YanPark | 25.02.18</span>
                 <i class="fa fa-heart-o fa-2x">12</i>
@@ -87,7 +87,7 @@
                     <i class="fa fa-trash-o iDelete fa-2x" aria-hidden="true"></i>
                 </a>
             </div>
-            <img class="imagePosition" src="IMGP2621.jpg" alt="photo">
+            <img class="imagePosition" src="img/IMGP2621.jpg" alt="photo">
             <div class="imageOwnerDataInfo">
                 <span class="userNameLabel">YanPark | 25.02.18</span>
                 <i class="fa fa-heart-o fa-2x">123</i>
@@ -104,7 +104,7 @@
                     <i class="fa fa-trash-o iDelete fa-2x" aria-hidden="true"></i>
                 </a>
             </div>
-            <img class="imagePosition" src="IMGP2620.jpg" alt="photo">
+            <img class="imagePosition" src="img/IMGP2620.jpg" alt="photo">
             <div class="imageOwnerDataInfo">
                 <span class="userNameLabel">YanPark | 25.02.18</span>
                 <i class="fa fa-heart-o fa-2x" aria-hidden="true">2</i>
@@ -122,7 +122,7 @@
                     <i class="fa fa-trash-o iDelete fa-2x" aria-hidden="true"></i>
                 </a>
             </div>
-            <img class="imagePosition" src="IMGP2622.jpg" alt="photo">
+            <img class="imagePosition" src="img/IMGP2622.jpg" alt="photo">
             <div class="imageOwnerDataInfo">
                 <span class="userNameLabel">YanPark | 25.02.18</span>
                 <i class="fa fa-heart-o fa-2x">12</i>
@@ -138,7 +138,7 @@
                     <i class="fa fa-trash-o iDelete fa-2x" aria-hidden="true"></i>
                 </a>
             </div>
-            <img class="imagePosition" src="IMGP2621.jpg" alt="photo">
+            <img class="imagePosition" src="img/IMGP2621.jpg" alt="photo">
             <div class="imageOwnerDataInfo">
                 <span class="userNameLabel">YanPark | 25.02.18</span>
                 <i class="fa fa-heart-o fa-2x">123</i>
