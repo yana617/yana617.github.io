@@ -23,30 +23,30 @@ window.domModul = (function () {
     let user = 'YanPark';
     let content = document.getElementsByClassName("content")[0];
     return {
-        makeUserNameShort: function(str){
-                let j = 0; let nameForShort = ""; let pos, middle;
-                middle = parseInt(str.length/2);
-                if (str.split(' ').length == 1) {
-                    for (let i = 0; i < str.length; i++) {
-                        if (str[i] === str[i].toUpperCase()) {
-                            nameForShort += str[i];
-                            j++; pos = i;
-                            if (j == 2) break;
-                        }
-                    }
-                    if (j == 2) return nameForShort;
-                    else {
-                        if (j == 0) return (str[0] + str[middle]).toUpperCase();
-                        else if (j == 1) {
-                            if (pos != 0) return str[0].toUpperCase() + str[pos];
-                            else return str[0] + str[middle].toUpperCase();
-                        }
+        makeUserNameShort: function (str) {
+            let j = 0; let nameForShort = ""; let pos, middle;
+            middle = parseInt(str.length / 2);
+            if (str.split(' ').length == 1) {
+                for (let i = 0; i < str.length; i++) {
+                    if (str[i] === str[i].toUpperCase()) {
+                        nameForShort += str[i];
+                        j++; pos = i;
+                        if (j == 2) break;
                     }
                 }
+                if (j == 2) return nameForShort;
                 else {
-                    let userNames = str.split(' ');
-                    return (userNames[0][0] + userNames[1][0]).toUpperCase();
+                    if (j == 0) return (str[0] + str[middle]).toUpperCase();
+                    else if (j == 1) {
+                        if (pos != 0) return str[0].toUpperCase() + str[pos];
+                        else return str[0] + str[middle].toUpperCase();
+                    }
                 }
+            }
+            else {
+                let userNames = str.split(' ');
+                return (userNames[0][0] + userNames[1][0]).toUpperCase();
+            }
         },
         changeUser: function (username) {
             if (username === null || typeof username === undefined) {
@@ -66,13 +66,13 @@ window.domModul = (function () {
                 nameShort.style.display = 'flex';
                 nameShort.textContent = this.makeUserNameShort(user);
                 let nameFull = document.getElementsByClassName('userNameFull')[0];
-                if(document.body.clientWidth<830) nameFull.style.display='none';
-                else if(user.length>13) {
-                    nameFull.style.display = 'flex'; 
+                if (document.body.clientWidth < 830) nameFull.style.display = 'none';
+                else if (user.length > 13) {
+                    nameFull.style.display = 'flex';
                     nameFull.style.width = '200px';
                     nameShort.style.right = '240px';
                     nameFull.textContent = user;
-                } 
+                }
             }
             getPhotoPosts()
             return true;
@@ -89,7 +89,7 @@ window.domModul = (function () {
                 });
             }
             let isOwner = '<div class="editDelete"><a class="edit" href="#"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></a>' +
-                '<a class="delete" href="#"><i class="fa fa-trash-o iDelete fa-2x" aria-hidden="true"></i></a></div>';
+                '<a class="delete" href="#" onclick="deleteEvent(this)"><i class="fa fa-trash-o iDelete fa-2x" aria-hidden="true"></i></a></div>';
             div.innerHTML = '<img class="imagePosition" src="' + post.photoLink + '" alt="photo"><div class="imageOwnerDataInfo">' +
                 '<span class="userNameLabel">' + post.author + ' | ' + post.createdAt.toLocaleString("ru", options) + '</span>' +
                 heart + '</div><div class="imageText"><p>' + post.description + '</p></div>';
@@ -148,10 +148,3 @@ function removePhotoPost(id) {
 }
 
 getPhotoPosts();
-console.log("You can try:");
-console.log("domModul.changeUser(null);");
-console.log("domModul.changeUser('KateK');");
-console.log("addPhotoPost(postForAdd);");
-console.log("removePhotoPost(5);");
-console.log("editPhotoPost(2, postForEdit);");
-console.log("getPhotoPosts(undefined, undefined, {hashtags: ['#победа']});");

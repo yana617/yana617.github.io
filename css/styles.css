@@ -109,7 +109,7 @@ header{
     right: 50px; 
     top: 15px;
 }
-.sign, .delete, .edit{
+.sign, .delete, .edit, .logo{
     color: black;
     text-decoration-line: none;
 }

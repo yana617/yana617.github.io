@@ -13,12 +13,14 @@
 
 <body>
     <header>
-        <div class="logo">
-            <div class="icon">
-                <img src="img/icon.jpg">
+        <a href="#" class="logo">
+            <div>
+                <div class="icon">
+                    <img src="img/icon.jpg">
+                </div>
+                <span class="logoText">PhotoCloud</span>
             </div>
-            <span class="logoText">PhotoCloud</span>
-        </div>
+        </a>
         <div class="addPhoto">
             <a class="addButton" href="#">Добавить фото</a>
         </div>
@@ -44,7 +46,24 @@
         <button type="submit"></button>
     </div>
     <div class="content">
-
+        <div class="post" id="1">
+            <div class="editDelete">
+                <a class="edit" href="#">
+                    <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
+                </a>
+                <a class="delete" href="#" onclick="deleteEvent(this)">
+                    <i class="fa fa-trash-o iDelete fa-2x" aria-hidden="true"></i>
+                </a>
+            </div>
+            <img class="imagePosition" src="img/IMGP2620.jpg" alt="photo">
+            <div class="imageOwnerDataInfo">
+                <span class="userNameLabel">YanPark | 25.02.18</span>
+                <i class="fa fa-heart-o fa-2x" aria-hidden="true">2</i>
+            </div>
+            <div class="imageText">
+                <p>Как красиво! #природа#красота</p>
+            </div>
+        </div>
     </div>
     <button class="loadMoreButton">Загрузить еще</button>
     <footer>
@@ -63,5 +82,5 @@
     </footer>
 </body>
 <script src="js/dom.js"></script>
-
+<script src="js/event.js"></script>
 </html>
