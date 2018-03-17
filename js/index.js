@@ -1,6 +1,6 @@
 var photoPosts = [
     {
-        id: '1',
+        id: '9',
         description: 'Спать! #сон #cute',
         createdAt: new Date('2018-03-09T13:41:00'),
         author: 'CatVlog',
@@ -9,7 +9,16 @@ var photoPosts = [
         hashtags: ['#сон', '#cute']
     },
     {
-        id: '2',
+        id: '8',
+        description: 'Wow! #nature',
+        createdAt: new Date('2018-03-07T08:25'),
+        author: 'naturePhoto',
+        photoLink: 'img/IMG4.jpg',
+        likes: ['Bobby', 'Mark-K', 'Иван Иванов'],
+        hashtags: ['#nature']
+    },
+    {
+        id: '7',
         description: 'Save homeless dog! You can do it! #help#home#wannahome',
         createdAt: new Date('2018-03-05T21:00:00'),
         author: 'KateK',
@@ -18,7 +27,7 @@ var photoPosts = [
         hashtags: ['#help', '#home', '#wannahome']
     },
     {
-        id: '3',
+        id: '6',
         description: 'Как красиво! #природа #красота #мир',
         createdAt: new Date('2018-03-03T21:00:00'),
         author: 'YanPark',
@@ -27,7 +36,7 @@ var photoPosts = [
         hashtags: ['#природа', '#красота', '#мир']
     },
     {
-        id: '4',
+        id: '5',
         description: '#кубик',
         createdAt: new Date('2018-03-02T21:15:00'),
         author: 'YanPark',
@@ -36,7 +45,7 @@ var photoPosts = [
         hashtags: ['#кубик']
     },
     {
-        id: '5',
+        id: '4',
         description: 'Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!! #победа',
         createdAt: new Date('2018-03-01T23:00:00'),
         author: 'Иванов Иван',
@@ -44,27 +53,8 @@ var photoPosts = [
         likes: ['MarkL', 'Bobby'],
         hashtags: ['#победа']
     },
-
     {
-        id: '6',
-        description: 'Спать! #сон#cute',
-        createdAt: new Date('2018-02-28T21:12:00'),
-        author: 'CatVlog',
-        photoLink: 'img/IMG1.jpg',
-        likes: ['Bobby', 'HiWorld'],
-        hashtags: ['#сон', '#cute']
-    },
-    {
-        id: '7',
-        description: 'Save homeless dog! You can do it! #help#home#wannahome',
-        createdAt: new Date('2018-02-27T21:00:00'),
-        author: 'Ki North',
-        photoLink: 'img/IMGP2622.jpg',
-        likes: ['MarkL', 'Bobby'],
-        hashtags: ['#help', '#home', '#wannahome']
-    },
-    {
-        id: '8',
+        id: '3',
         description: 'Милый кот хочет кушать! #спаси_его',
         createdAt: new Date('2018-02-24T14:15:00'),
         author: 'Оля Мика',
@@ -73,114 +63,39 @@ var photoPosts = [
         hashtags: ['#спаси_его']
     },
     {
-        id: '9',
-        description: 'Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!! #победа',
-        createdAt: new Date('2018-02-22T23:15:00'),
-        author: 'Иванов Иван',
-        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        likes: ['MarkL', 'Bobby', 'YanPark'],
-        hashtags: ['#победа']
+        id: '2',
+        description: 'Wow! It is so unreal! #reality #nature',
+        createdAt: new Date('2018-02-20T23:45'),
+        author: 'naturePhoto',
+        photoLink: 'img/IMG3.jpg',
+        likes: ['Bobby', 'YanPark', 'Иван Иванов'],
+        hashtags: ['#reality', '#nature']
     },
     {
-        id: '10',
-        description: 'Милый кот хочет кушать! #спаси_его',
-        createdAt: new Date('2018-02-20T14:15:00'),
-        author: 'Оля Мика',
-        photoLink: 'img/IMGP2621.jpg',
-        likes: ['MarkL', 'Bobby'],
-        hashtags: ['#спаси_его']
-    },
-    {
-        id: '11',
-        description: '#кубик',
-        createdAt: new Date('2018-02-20T12:35:00'),
-        author: 'YanPark',
-        photoLink: 'img/IMG2.jpg',
-        likes: ['MишаК'],
-        hashtags: ['#кубик']
-    },
-    {
-        id: '12',
-        description: 'Save homeless dog! You can do it! #help#home#wannahome',
-        createdAt: new Date('2018-02-19T21:00:00'),
-        author: 'Ki North',
-        photoLink: 'img/IMGP2622.jpg',
-        likes: ['MarkL', 'Bobby'],
-        hashtags: ['#help', '#home', '#wannahome']
-    },
-    {
-        id: '13',
-        description: 'Как красиво! #природа #красота',
-        createdAt: new Date('2018-02-17T21:00:00'),
-        author: 'YanPark',
-        photoLink: 'img/IMGP2620.jpg',
-        likes: ['MarkL', 'Bobby'],
-        hashtags: ['#природа', '#красота']
-    },
-    {
-        id: '14',
-        description: 'Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!! #победа',
-        createdAt: new Date('2018-02-15T23:00:00'),
-        author: 'Иванов Иван',
-        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        likes: ['MarkL', 'Bobby'],
-        hashtags: ['#победа']
-    },
-    {
-        id: '15',
-        description: 'Милый кот хочет кушать! #спаси_его',
-        createdAt: new Date('2018-02-14T14:15:00'),
-        author: 'Оля Мика',
-        photoLink: 'img/IMGP2621.jpg',
-        likes: ['MarkL', 'Bobby'],
-        hashtags: ['#спаси_его']
-    },
-    {
-        id: '16',
-        description: 'Save homeless dog! You can do it! #help#home#wannahome',
-        createdAt: new Date('2018-02-12T21:00:00'),
-        author: 'Ki North',
-        photoLink: 'img/IMGP2622.jpg',
-        likes: ['MarkL', 'Bobby'],
-        hashtags: ['#help', '#home', '#wannahome']
-    },
-    {
-        id: '17',
-        description: 'Как красиво! #природа #красота #мир',
-        createdAt: new Date('2018-02-11T21:00:00'),
-        author: 'YanPark',
-        photoLink: 'img/IMGP2620.jpg',
-        likes: ['MarkL', 'Bobby'],
-        hashtags: ['#природа', '#красота', '#мир']
-    },
-    {
-        id: '18',
-        description: 'Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!! #победа',
-        createdAt: new Date('2018-02-09T23:00:00'),
-        author: 'Иванов Иван',
-        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        likes: ['MarkL', 'Bobby'],
-        hashtags: ['#победа']
-    },
-    {
-        id: '19',
-        description: 'Милый кот хочет кушать! #спаси_его',
-        createdAt: new Date('2018-02-07T14:15:00'),
-        author: 'Оля Мика',
-        photoLink: 'img/IMGP2621.jpg',
-        likes: ['MarkL', 'Bobby'],
-        hashtags: ['#спаси_его']
-    },
-    {
-        id: '20',
-        description: 'Save homeless dog! You can do it! #help#home#wannahome',
-        createdAt: new Date('2018-02-05T21:00:00'),
-        author: 'Ki North',
-        photoLink: 'img/IMGP2622.jpg',
-        likes: ['MarkL', 'Bobby'],
-        hashtags: ['#help', '#home', '#wannahome']
+        id: '1',
+        description: '#wings',
+        createdAt: new Date('2018-02-18T13:03'),
+        author: 'Bobby',
+        photoLink: 'img/IMG5.jpg',
+        likes: ['Bobby', 'YanPark', 'Иван Иванов', 'MarkK', 'naturePhoto'],
+        hashtags: ['#wings']
     }
 ];
+localStorage.clear();
+for (let i = 0; i < photoPosts.length; i++) {
+    let str = JSON.stringify(photoPosts[i]);
+    localStorage.setItem(photoPosts[i].id, str);
+}
+var photoPosts2=[];
+for (let i = 0; i < localStorage.length; i++) {
+    let str = localStorage.getItem(photoPosts[i].id);
+    let item = JSON.parse(str, function(key, value) {
+        if (key == 'createdAt') return new Date(value);
+        return value;
+    });
+    photoPosts2.push(item);
+}
+console.log(photoPosts2);
 
 window.funcModul = (function () {
     return {

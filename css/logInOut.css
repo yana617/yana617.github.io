@@ -1,0 +1,145 @@
+.icon-link{
+    position: absolute;
+    top:5px;
+    right: 5px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding-right: 2px; 
+}
+.main{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-content: center;
+    justify-content: center; 
+    align-items: center;
+    background-image: url("../img/logIn.jpg");
+    background-size: 100% 100%;  
+}
+.input-block{
+    display: flex;
+    position: absolute;
+    padding: 5px;
+    height: 40%;
+    width: 25%;
+    top: 30%;
+    right: 20%; 
+    align-content: center;
+    justify-content: center;
+    flex-direction: row;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.text-log-in{
+    display: flex;
+    padding-top: 10px;
+    justify-content: center;
+    height: 20%;
+    color: white;
+    font-size: 40px;
+    font-family: sans-serif;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px gray solid;  
+}
+.input-block input{
+    font-size: larger;
+}
+.input-name{
+    display: flex;
+    position: absolute;
+    top: 90px;
+    height: 50px;
+    width: 90%;
+}
+.input-password{
+    display: flex;
+    position: absolute;
+    top: 170px;
+    height: 50px;
+    width: 90%;
+}
+.for-button{
+    position: absolute;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    top: 75%;
+    width: 90%;
+}
+
+.for-button a {
+    text-decoration: none;
+    outline:none;
+    color: white;
+    display: inline-block;
+    position: relative;
+    padding: 15px 30px;
+    border: 1px solid;
+    border-image: linear-gradient(180deg,#ff3000,#ed0200,#ff096c,#d50082);
+    border-image-slice: 1;
+    margin: 1% 2%;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    overflow: hidden;
+    z-index: 0;
+    letter-spacing: 2px;
+    transition: .8s cubic-bezier(.165,.84,.44,1);
+}
+.for-button a:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 0;
+    width: 100%;
+    z-index: -1;
+    color: white;
+    background: linear-gradient(180deg,#ff3000,#ed0200,#ff096c,#d50082);
+    transition: .8s cubic-bezier(.165,.84,.44,1);
+}
+.for-button a:hover {
+    background: rgba(255,255,255,0);
+}
+.for-button a:hover:before {
+	bottom: 0%;
+	top: auto;
+	height: 100%;
+}
+@media(max-width:1500px){
+    .input-block{
+        width: 30%;
+    }
+}
+@media(max-width:1300px){
+    .input-block{
+        width: 40%;
+    }
+}
+@media(max-width:1000px){
+    .icon-link{
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+    .main{
+        background-image: url('../img/logInPhone.jpg');
+    }
+    .input-block{
+        padding-top: 3%; 
+        padding-bottom: 5%;
+        position: static;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: space-around;
+        height: 40%;
+        width: 95%;
+    }
+    .for-button a{
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .input-name, .input-password, .for-button, .text-log-in{
+        position: static;
+    }
+    .text-log-in{
+        padding: 0px;
+    }
+}

@@ -1,17 +1,3 @@
-let postForAdd = {
-    id: '21',
-    description: 'Милый кот хочет кушать! #спаси_его',
-    createdAt: new Date('2018-03-10T14:15:00'),
-    author: 'Оля Мика',
-    photoLink: 'img/IMGP2621.jpg',
-    likes: ['MarkL', 'Bobby'],
-    hashtags: ['#спаси_его']
-}
-let postForEdit = {
-    description: 'Как красиво! Безумно красиво! #природа #красота #мир #нереально',
-    hashtags: ['#природа', '#красота', '#мир', '#нереально']
-}
-
 var options = {
     month: 'long',
     day: 'numeric',
@@ -20,9 +6,13 @@ var options = {
 };
 
 window.domModul = (function () {
-    let user = 'YanPark';
-    let content = document.getElementsByClassName("content")[0];
+    let user = null;
+    let filterConfig;
+    let content;
     return {
+        setContent: function(){
+            content = document.getElementsByClassName("content")[0];
+        },
         makeUserNameShort: function (str) {
             let j = 0; let nameForShort = ""; let pos, middle;
             middle = parseInt(str.length / 2);
@@ -51,6 +41,7 @@ window.domModul = (function () {
         changeUser: function (username) {
             if (username === null || typeof username === undefined) {
                 user = username;
+                document.getElementsByClassName('sign')[0].setAttribute('onclick', 'logIn()');
                 document.getElementsByClassName('sign')[0].innerHTML = '<i class="fa fa-sign-in signicon2 fa-3x" aria-hidden="true"></i>';
                 document.getElementsByClassName('userNameShort')[0].style.display = 'none';
                 document.getElementsByClassName('userNameFull')[0].style.display = 'none';
@@ -67,14 +58,18 @@ window.domModul = (function () {
                 nameShort.textContent = this.makeUserNameShort(user);
                 let nameFull = document.getElementsByClassName('userNameFull')[0];
                 if (document.body.clientWidth < 830) nameFull.style.display = 'none';
-                else if (user.length > 13) {
+                else {
+                    if (user.length > 13) {
+                        nameFull.style.width = '200px';
+                        nameShort.style.right = '240px';
+                    }
                     nameFull.style.display = 'flex';
-                    nameFull.style.width = '200px';
-                    nameShort.style.right = '240px';
                     nameFull.textContent = user;
                 }
+
             }
-            getPhotoPosts()
+            document.getElementsByClassName('content')[0].innerHTML = '';
+            getPhotoPosts();
             return true;
         },
         createPost: function (post) {
@@ -88,8 +83,15 @@ window.domModul = (function () {
                         heart = '<i class="fa fa-heart fa-2x heart" aria-hidden="true">' + post.likes.length + '</i>';
                 });
             }
-            let isOwner = '<div class="editDelete"><a class="edit" href="#"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></a>' +
-                '<a class="delete" href="#" onclick="deleteEvent(this)"><i class="fa fa-trash-o iDelete fa-2x" aria-hidden="true"></i></a></div>';
+            let isOwner =
+                `<div class="editDelete">
+                    <a class="edit" href="#">
+                        <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
+                    </a>
+                    <a class="delete" href="#" onclick="deleteEvent(this)">
+                         <i class="fa fa-trash-o iDelete fa-2x" aria-hidden="true"></i>
+                     </a>
+               </div>`;
             div.innerHTML = '<img class="imagePosition" src="' + post.photoLink + '" alt="photo"><div class="imageOwnerDataInfo">' +
                 '<span class="userNameLabel">' + post.author + ' | ' + post.createdAt.toLocaleString("ru", options) + '</span>' +
                 heart + '</div><div class="imageText"><p>' + post.description + '</p></div>';
@@ -131,7 +133,6 @@ window.domModul = (function () {
 
 function getPhotoPosts(skip = 0, top = 8, filterConfig) {
     let content = document.getElementsByClassName('content')[0];
-    content.innerHTML = '';
     domModul.getPosts(skip, top, filterConfig);
 }
 function addPhotoPost(post) {
@@ -147,4 +148,4 @@ function removePhotoPost(id) {
     return false;
 }
 
-getPhotoPosts();
+setPage.MainPage();

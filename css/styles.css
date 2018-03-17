@@ -7,7 +7,7 @@ body{
     margin: 0px;
 }
 header{
-    background-color: whitesmoke;
+    background: linear-gradient(0deg, whitesmoke, white);
     width: 100%;
     height: 70px;
     position: fixed;
@@ -37,7 +37,7 @@ header{
 .addPhoto{
     height: 70px;
     width: 40%;
-    display: flex;
+    display: none;
     font-family: Palatino Linotype; 
     font-size: 25px;
 }
@@ -86,7 +86,7 @@ header{
     background-color: lavender;
     border: 0.5px solid black;
     border-radius: 100%;
-    display: flex;
+    display: none;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -97,10 +97,10 @@ header{
     margin: auto;
     width: 160px;
     height: 40px;
-    border: 1px dotted blue;
+    border: 1px solid gray;
     border-radius: 0px 20px 20px 0px;
-    background-color: mintcream;
-    display: flex;
+    background-color: white;
+    display: none;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -128,8 +128,7 @@ header{
     justify-content: center;
     align-content: center;
     background-color: white;
-    border-bottom-color: blanchedalmond;  
-    
+    background: linear-gradient(to left, rgb(255, 255, 255) 20%, rgb(163, 220, 235) 50%, rgb(255, 255, 255) 80%, rgb(255, 255, 255) 40%);
 }
 * {box-sizing: border-box;}
 .searchAuthorHashtag{
@@ -218,8 +217,8 @@ header{
     padding: 3px;
     height: 35px;
     position: absolute;
-    right: 5px;
-    top:5px;
+    right: 1px;
+    top:1px;
     background-color: white;
     opacity: 0.5;
 }
@@ -263,7 +262,7 @@ header{
     font-size: 15px;
 }
 .heart{
-    color: red;
+    color: rgb(240, 18, 74);
 }
 .imageText{
     width: 96%;
@@ -298,7 +297,6 @@ header{
     color: white;
     transform: translateY(-7px);
 }
-
 footer{
     height: 70px;
     width: 100%;
@@ -345,6 +343,9 @@ footer{
     .search button {left: 5px;}
     .userNameFull{display: none;}
     .userNameShort{right:50px;}
+    .search{
+        background: linear-gradient(to left, rgb(255, 255, 255) 5%, rgb(163, 220, 235) 85%, rgb(255, 255, 255) 100%, rgb(255, 255, 255) 90%);
+    }
   }
 @media(max-width:860px){
     .post{max-height: none;}
