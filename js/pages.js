@@ -72,11 +72,11 @@ window.setPage = (function () {
                 <img src="img/icon.png" class="icon-link" onclick="setPage.MainPage();"/>
                 <div class="input-block">
                     <div class="text-log-in"><span>ВХОД</span></div>
-                    <input class="input-name" type="text" maxlength="50" placeholder="Логин">
-                    <input class="input-password" type="password" maxlength="30" minlength="6" placeholder="Пароль">    
+                    <input class="input-name" id="input_name" type="text" maxlength="50" placeholder="Логин">
+                    <input class="input-password" id="input_password" type="password" maxlength="30" minlength="6" placeholder="Пароль">    
                     <div class="for-button">
-                        <a href="">Вход</a>
-                        <a href="">Регистрация</a>
+                        <a href="#" onclick="signIn();">Вход</a>
+                        <a href="#" onclick="signUp();">Регистрация</a>
                     </div>
                 </div>
             </div>`;

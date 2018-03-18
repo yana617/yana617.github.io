@@ -41,14 +41,15 @@ window.domModul = (function () {
         changeUser: function (username) {
             if (username === null || typeof username === undefined) {
                 user = username;
-                document.getElementsByClassName('sign')[0].setAttribute('onclick', 'logIn()');
+                document.getElementsByClassName('sign')[0].setAttribute('onclick', 'setPage.LogInPage();');
                 document.getElementsByClassName('sign')[0].innerHTML = '<i class="fa fa-sign-in signicon2 fa-3x" aria-hidden="true"></i>';
                 document.getElementsByClassName('userNameShort')[0].style.display = 'none';
                 document.getElementsByClassName('userNameFull')[0].style.display = 'none';
                 document.getElementsByClassName('addPhoto')[0].style.display = 'none';
             }
             else {
-                if (user === null) {
+                if (user === null || typeof username === undefined) {
+                    document.getElementsByClassName('sign')[0].setAttribute('onclick', 'logOut();');
                     document.getElementsByClassName('sign')[0].innerHTML = '<i class="fa fa-sign-out signicon fa-3x" aria-hidden="true"></i>';
                     document.getElementsByClassName('addPhoto')[0].style.display = 'flex';
                 }

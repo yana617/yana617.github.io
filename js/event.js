@@ -14,7 +14,14 @@ function loadMore(link) {
     if (count + 8 > photoPosts.length) link.style.display = 'none';
     getPhotoPosts(count, 8);
 }
-
+function signIn(){
+    let name = document.getElementById('input_name').value;
+    //var text = document.getElementsByTagName("input")[0];
+    console.log(name);
+    let password = document.querySelector('input-password');
+    setPage.MainPage();
+    domModul.changeUser(name);
+}
 
 
 
