@@ -67,7 +67,6 @@
     top: 75%;
     width: 90%;
 }
-
 .for-button a {
     text-decoration: none;
     outline:none;
@@ -121,7 +120,7 @@
         background-color: rgba(255, 255, 255, 0.5);
     }
     .main{
-        background-image: url('../img/logInPhone.jpg');
+        background-image: url('../img/logInPhone2.jpg');
     }
     .input-block{
         padding-top: 3%; 
@@ -131,7 +130,7 @@
         flex-wrap: wrap;
         align-content: space-around;
         height: 40%;
-        width: 95%;
+        width: 70%;
     }
     .for-button a{
         background-color: rgba(0, 0, 0, 0.5);
@@ -141,5 +140,16 @@
     }
     .text-log-in{
         padding: 0px;
+    }
+}
+@media(max-width: 600px){
+    .input-name, .input-password{
+        height: 40px;
+    }
+    .for-button a{
+        padding: 15px 20px;
+    }
+    .input-block{
+        width: 95%;
     }
 }

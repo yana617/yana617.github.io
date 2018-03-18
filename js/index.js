@@ -81,23 +81,25 @@ var photoPosts = [
         hashtags: ['#wings']
     }
 ];
-localStorage.clear();
-for (let i = 0; i < photoPosts.length; i++) {
-    let str = JSON.stringify(photoPosts[i]);
-    localStorage.setItem(photoPosts[i].id, str);
-}
-var photoPosts2=[];
-for (let i = 0; i < localStorage.length; i++) {
-    let str = localStorage.getItem(photoPosts[i].id);
-    let item = JSON.parse(str, function(key, value) {
-        if (key == 'createdAt') return new Date(value);
-        return value;
-    });
-    photoPosts2.push(item);
-}
-console.log(photoPosts2);
+//localStorage.clear();
+//for (let i = 0; i < photoPosts.length; i++) {
+  //  let str = JSON.stringify(photoPosts[i]);
+    //console.log(str);
+    //localStorage.setItem(photoPosts[i].id, str);
+//}
+//var photoPosts2=[];
+//for (let i = 0; i < localStorage.length; i++) {
+    //let str = localStorage.getItem(photoPosts[i].id);
+    //let item = JSON.parse(str, function(key, value) {
+    //    if (key == 'createdAt') return new Date(value);
+     //   return value;
+   // });
+    //photoPosts2.push(item);
+//}
+//console.log(photoPosts2);
 
 window.funcModul = (function () {
+    //var photoPosts = window.localStorage;
     return {
         getPhotoPosts: function (skip = 0, top = 8, filterConfig) {
             if (typeof skip !== 'number' || typeof top !== 'number') {
