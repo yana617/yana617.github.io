@@ -282,6 +282,7 @@ header{
     justify-content: center;
     padding: 5px; 
     margin: 7px;
+    word-wrap:break-word;
 }
 
 .load-more-button{

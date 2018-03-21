@@ -145,7 +145,6 @@ window.domModul = (function () {
 })();
 
 function getPhotoPosts(skip = 0, top = 8, filterConfig) {
-    let content = document.getElementsByClassName('content')[0];
     domModul.getPosts(skip, top, filterConfig);
 }
 function addPhotoPost(post) {

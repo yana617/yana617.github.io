@@ -34,26 +34,46 @@ function addPhoto() {
     const author = domModul.getUser();
     const likes = [];
     let photoLink;
-    if(document.getElementById('img-upload').files.length===0) photoLink=""; 
+    if (document.getElementById('img-upload').files.length === 0) photoLink = "";
     else photoLink = document.getElementById('img-upload').files[0].name;
-    const description = document.getElementById('text-form').textContent;
+    let description = document.getElementById('text-form').value;
     let hashtags = description.match(/#[^\s#]*/g);
+    description = description.replace(/\n/g, '<br>');
     if (hashtags === null) hashtags = [];
     const createdAt = new Date();
     const post = { id, description, createdAt, author, photoLink, likes, hashtags };
-    if (addPhotoPost(post)) setMainPageFromAddEdit();
-    else{
-        alert('Edit entered info');
+    if (addPhotoPost(post)) {
+        setMainPageFromAddEdit();
+        document.querySelector('.sign').setAttribute('onclick', 'logOut();');
+    }
+    else {
+        alert('Проверьте введенные данные.');
     }
 }
 function editPhoto() {
-    const photoLink = document.getElementById('img-upload').files[0].name;
-    const description = document.getElementById('text-form').value;
+    let photoLink; 
+    if(document.getElementById('img-upload').value!=='') {
+        photoLink = document.getElementById('img-upload').files[0].name;
+    }
+    let description = document.getElementById('text-form').value;
     let hashtags = description.match(/#[^\s#]*/g);
+    description = description.replace(/\n/g, '<br>');
     if (hashtags === null) hashtags = [];
-    const post = { description, hashtags, photoLink };
+    let post;
+    if(photoLink) post = { description, hashtags, photoLink };
+    else post = {description, hashtags};
     const id = document.querySelector('.add-main-container').getAttribute('id');
-    if(!editPhotoPost(id, post)){
+    if (!editPhotoPost(id, post)) {
         alert('Edit entered info');
-    } 
+    }
+    document.querySelector('.sign').setAttribute('onclick', 'logOut();');
 }
+function rewatch(textAreaLink) {
+    var textArea = textAreaLink;
+    var maxRows = textArea.getAttribute('rows');
+    if (event.keyCode == 13){
+        var lines = textArea.value.split('\n');
+        if (lines.length > maxRows) { return false;}
+        else { return true; }
+    }
+};

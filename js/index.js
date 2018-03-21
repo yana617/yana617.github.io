@@ -14,7 +14,7 @@ var photoPosts = [
         createdAt: new Date('2018-03-07T08:25'),
         author: 'naturePhoto',
         photoLink: 'img/IMG4.jpg',
-        likes: ['Bobby', 'Mark-K', 'Иван Иванов'],
+        likes: ['Bobby', 'MarkK', 'ИванИванов'],
         hashtags: ['#nature']
     },
     {
@@ -48,7 +48,7 @@ var photoPosts = [
         id: '4',
         description: 'Женская сборная Беларуси выиграла эстафету в рамках соревнований по биатлону на Олимпийских играх в Пхёнчхане!!! #победа',
         createdAt: new Date('2018-03-01T23:00:00'),
-        author: 'Иванов Иван',
+        author: 'ИвановИван',
         photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
         likes: ['MarkL', 'Bobby'],
         hashtags: ['#победа']
@@ -57,7 +57,7 @@ var photoPosts = [
         id: '3',
         description: 'Милый кот хочет кушать! #спаси_его',
         createdAt: new Date('2018-02-24T14:15:00'),
-        author: 'Оля Мика',
+        author: 'ОляМика',
         photoLink: 'img/IMGP2621.jpg',
         likes: ['MarkL', 'Bobby'],
         hashtags: ['#спаси_его']
@@ -68,7 +68,7 @@ var photoPosts = [
         createdAt: new Date('2018-02-20T23:45'),
         author: 'naturePhoto',
         photoLink: 'img/IMG3.jpg',
-        likes: ['Bobby', 'YanPark', 'Иван Иванов'],
+        likes: ['Bobby', 'YanPark', 'ИванИванов'],
         hashtags: ['#reality', '#nature']
     },
     {
@@ -77,7 +77,7 @@ var photoPosts = [
         createdAt: new Date('2018-02-18T13:03'),
         author: 'Bobby',
         photoLink: 'img/IMG5.jpg',
-        likes: ['Bobby', 'YanPark', 'Иван Иванов', 'MarkK', 'naturePhoto'],
+        likes: ['Bobby', 'YanPark', 'ИванИванов', 'MarkK', 'naturePhoto'],
         hashtags: ['#wings']
     }
 ];

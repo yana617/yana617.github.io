@@ -75,7 +75,7 @@ window.getHTML = (function () {
                 </div>
                 <div class="description-form">
                     <span class="to-do-info">Описание:</span>
-                    <div id="text-form" placegolder="--" contenteditable="true" maxlength="200"></div>        
+                    <textarea id="text-form" placeholder="Не более 200 символов:)" onkeypress="return rewatch(this);" rows="6" maxlength="180"></textarea>
                     <input class="submit-button" type="submit" onclick="addPhoto();" value="Добавить">
                 </div>
             </div>
@@ -98,12 +98,12 @@ window.getHTML = (function () {
                 </div>
                 <div class="description-form">
                     <span class="to-do-info">Описание:</span>
-                    <textarea id="text-form" placeholder="Не более 200 символов:)" maxlength="200" cols="40" rows="10" required></textarea>
+                    <textarea id="text-form" placeholder="Не более 200 символов:)" onkeypress="return rewatch(this);" rows="6" maxlength="180"></textarea>
                     <input class="submit-button" type="submit" onclick="editPhoto();" value="Сохранить">
                 </div>
             </div>
             `;
-        },//<textarea id="text-form" placeholder="Не более 200 символов:)"  contenteditable="true" maxlength="200" required></textarea>
+        },
         LogInPage: function () {
             return `
             <div class="main">
@@ -111,7 +111,7 @@ window.getHTML = (function () {
                 <div class="input-block">
                     <div class="text-log-in"><span>ВХОД</span></div>
                     <form onsubmit="signIn()">
-                        <input class="input-name" type="text" id="input_name" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{4,20}$" title="Вы ввели запрещенный символ! Только латиница и цифры." placeholder="Логин" required>
+                        <input class="input-name" type="text" id="input_name" pattern="^[А-ЯЁа-яёa-zA-Z][А-ЯЁа-яёa-zA-Z0-9-_\.]{4,20}$" title="Вы ввели запрещенный символ! Только латиница и цифры." placeholder="Логин" required>
                         <input class="input-password" id="input_password" type="password" maxlength="30" minlength="6" placeholder="Пароль" required>    
                         <div type="submit" class="for-button">
                             <button type='submit'>Войти</button>
@@ -136,6 +136,7 @@ function setLogInPage() {
 }
 function setAddPostPage() {
     document.querySelector('.add-button').style.display = 'none';
+    document.querySelector('.sign').setAttribute('onclick', 'logOutFromAddEdit');
     document.querySelector('.main-container').className = 'add-main-container';
     document.querySelector('.add-main-container').innerHTML = getHTML.AddPostPage();
     document.querySelector('.logo').setAttribute('onclick', 'setMainPageFromAddEdit()');
@@ -147,23 +148,21 @@ function setMainPageFromAddEdit() {
     domModul.setContent();
     getPhotoPosts();
 }
-function setEditPostPage(post){
+function setEditPostPage(post) {
     const photoPost = post.parentNode.parentNode;
     const photoLink = photoPost.querySelector('.image-position').src;
-    const description = photoPost.querySelector('.text-info').innerHTML;
-    
+    const description = photoPost.querySelector('.text-info').innerHTML.replace(/<br>/g, '\n');
     document.querySelector('.add-button').style.display = 'none';
     document.querySelector('.main-container').className = 'add-main-container';
     document.querySelector('.add-main-container').id = post.parentNode.parentNode.id;
     document.querySelector('.add-main-container').innerHTML = getHTML.EditPostPage();
+    document.querySelector('.sign').setAttribute('onclick', 'logOutFromAddEdit');
     document.querySelector('.addphoto-image-size').src = photoLink;
     document.querySelector('.logo').setAttribute('onclick', 'setMainPageFromAddEdit()');
     document.getElementById('text-form').innerHTML = description;
+    document.getElementById('img-upload').value = '';
 }
 
 console.log("Фильтрация");
-console.log("Баг с входом в два слова");
 console.log("Кнопка логаута в адд/едит");
 console.log("лайки");
-console.log("Вывод сообщения при ошибке адд/едит");
-console.log("Вывод вопроса о согласии на удаление");
