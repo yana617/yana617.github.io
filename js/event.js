@@ -36,7 +36,7 @@ function addPhoto() {
     let photoLink;
     if(document.getElementById('img-upload').files.length===0) photoLink=""; 
     else photoLink = document.getElementById('img-upload').files[0].name;
-    const description = document.getElementById('text-form').value;
+    const description = document.getElementById('text-form').textContent;
     let hashtags = description.match(/#[^\s#]*/g);
     if (hashtags === null) hashtags = [];
     const createdAt = new Date();

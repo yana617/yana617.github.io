@@ -4,7 +4,7 @@
     align-content: center;
     justify-content: center;
     padding-top: 70px; 
-    height: calc(100vh - 70px);
+    min-height: calc(100vh - 70px);
     width: 100%;
 }
 
@@ -94,8 +94,19 @@
 }
 textarea{
     resize: none;
-    overflow: hidden;
-    border-radius: 10px; 
+    border-radius: 10px;
+    width: 90%;
+    height: auto; 
+    min-height: 20px;
+}
+#text-form{
+    height: auto;
+    width: 90%;
+    border: 1px grey dotted;
+    border-radius: 10px;
+    max-height: 150px;
+    background-color: white;
+    overflow: auto;
 }
 .submit-button{
     line-height: 40px;
@@ -125,8 +136,10 @@ textarea{
         width: 95%;
     }
     .add-form{
-        padding: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
         width: 95%;
+        height: auto;
     }
     .description-form{
         height: 50%;

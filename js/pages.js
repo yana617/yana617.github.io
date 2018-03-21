@@ -75,7 +75,7 @@ window.getHTML = (function () {
                 </div>
                 <div class="description-form">
                     <span class="to-do-info">Описание:</span>
-                    <textarea id="text-form" placeholder="Не более 200 символов:)" maxlength="200" cols="40" rows="10" required></textarea>
+                    <div id="text-form" placegolder="--" contenteditable="true" maxlength="200"></div>        
                     <input class="submit-button" type="submit" onclick="addPhoto();" value="Добавить">
                 </div>
             </div>
@@ -103,7 +103,7 @@ window.getHTML = (function () {
                 </div>
             </div>
             `;
-        },
+        },//<textarea id="text-form" placeholder="Не более 200 символов:)"  contenteditable="true" maxlength="200" required></textarea>
         LogInPage: function () {
             return `
             <div class="main">
