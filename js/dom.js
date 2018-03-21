@@ -7,10 +7,11 @@ var options = {
 
 window.domModul = (function () {
     let user = null;
+    let userShort = null;
     let filterConfig;
     let content;
     return {
-        setContent: function(){
+        setContent: function () {
             content = document.getElementsByClassName("content")[0];
         },
         makeUserNameShort: function (str) {
@@ -41,23 +42,24 @@ window.domModul = (function () {
         changeUser: function (username) {
             if (username === null || typeof username === undefined) {
                 user = username;
-                document.getElementsByClassName('sign')[0].setAttribute('onclick', 'setPage.LogInPage();');
+                document.getElementsByClassName('sign')[0].setAttribute('onclick', 'setLogInPage()');
                 document.getElementsByClassName('sign')[0].innerHTML = '<i class="fa fa-sign-in signicon2 fa-3x" aria-hidden="true"></i>';
-                document.getElementsByClassName('userNameShort')[0].style.display = 'none';
-                document.getElementsByClassName('userNameFull')[0].style.display = 'none';
-                document.getElementsByClassName('addPhoto')[0].style.display = 'none';
+                document.getElementsByClassName('user-name-short')[0].style.display = 'none';
+                document.getElementsByClassName('user-name-full')[0].style.display = 'none';
+                document.getElementsByClassName('add-photo')[0].style.display = 'none';
             }
             else {
                 if (user === null || typeof username === undefined) {
                     document.getElementsByClassName('sign')[0].setAttribute('onclick', 'logOut();');
                     document.getElementsByClassName('sign')[0].innerHTML = '<i class="fa fa-sign-out signicon fa-3x" aria-hidden="true"></i>';
-                    document.getElementsByClassName('addPhoto')[0].style.display = 'flex';
+                    document.getElementsByClassName('add-photo')[0].style.display = 'flex';
                 }
                 user = username;
-                let nameShort = document.getElementsByClassName('userNameShort')[0];
+                let nameShort = document.getElementsByClassName('user-name-short')[0];
                 nameShort.style.display = 'flex';
-                nameShort.textContent = this.makeUserNameShort(user);
-                let nameFull = document.getElementsByClassName('userNameFull')[0];
+                userShort = this.makeUserNameShort(user);
+                nameShort.textContent = userShort;
+                let nameFull = document.getElementsByClassName('user-name-full')[0];
                 if (document.body.clientWidth < 830) nameFull.style.display = 'none';
                 else {
                     if (user.length > 13) {
@@ -73,6 +75,9 @@ window.domModul = (function () {
             getPhotoPosts();
             return true;
         },
+        getUser: function () {
+            return user;
+        },
         createPost: function (post) {
             let div = document.createElement('div');
             div.id = post.id;
@@ -85,17 +90,23 @@ window.domModul = (function () {
                 });
             }
             let isOwner =
-                `<div class="editDelete">
-                    <a class="edit" href="#">
+                `<div class="edit-delete">
+                    <a class="edit" href="#" onclick="setEditPostPage(this)">
                         <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
                     </a>
                     <a class="delete" href="#" onclick="deleteEvent(this)">
                          <i class="fa fa-trash-o iDelete fa-2x" aria-hidden="true"></i>
                      </a>
                </div>`;
-            div.innerHTML = '<img class="imagePosition" src="' + post.photoLink + '" alt="photo"><div class="imageOwnerDataInfo">' +
-                '<span class="userNameLabel">' + post.author + ' | ' + post.createdAt.toLocaleString("ru", options) + '</span>' +
-                heart + '</div><div class="imageText"><p>' + post.description + '</p></div>';
+            div.innerHTML = `
+                <img class="image-position" src="` + post.photoLink + `" alt="photo">
+                <div class="image-owner-data-info">
+                    <span class="user-name-label">` + post.author + ' | ' + post.createdAt.toLocaleString("ru", options) + '</span>' +
+                    heart + `
+                </div>
+                <div class="image-text">
+                    <p class="text-info">` + post.description + `</p>
+                </div>`;
             if (user === post.author) div.innerHTML = isOwner + div.innerHTML;
             return div;
         },
@@ -115,7 +126,8 @@ window.domModul = (function () {
         },
         editPost: function (id, post) {
             if (funcModul.editPhotoPost(id, post)) {
-                content.replaceChild(this.createPost(funcModul.getPhotoPost(id)), document.getElementById(id));
+                setMainPageFromAddEdit();
+                //content.replaceChild(this.createPost(funcModul.getPhotoPost(id)), document.getElementById(id));
                 return true;
             }
             return false;
@@ -149,4 +161,5 @@ function removePhotoPost(id) {
     return false;
 }
 
-setPage.MainPage();
+setMainPage();
+domModul.changeUser("KateK");

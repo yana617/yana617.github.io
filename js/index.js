@@ -82,30 +82,27 @@ var photoPosts = [
     }
 ];
 //localStorage.clear();
-//for (let i = 0; i < photoPosts.length; i++) {
-  //  let str = JSON.stringify(photoPosts[i]);
-    //console.log(str);
-    //localStorage.setItem(photoPosts[i].id, str);
-//}
-//var photoPosts2=[];
-//for (let i = 0; i < localStorage.length; i++) {
-    //let str = localStorage.getItem(photoPosts[i].id);
-    //let item = JSON.parse(str, function(key, value) {
-    //    if (key == 'createdAt') return new Date(value);
-     //   return value;
-   // });
-    //photoPosts2.push(item);
-//}
-//console.log(photoPosts2);
+//localStorage.setItem('id', 10);
+//window.localStorage.setItem('posts', JSON.stringify(photoPosts));
+
+
+//var photoPosts = [];
+//photoPosts = JSON.parse(window.localStorage.posts, function (key, value) {
+    //if (key == 'createdAt') return new Date(value);
+  //  return value;
+//});
 
 window.funcModul = (function () {
-    //var photoPosts = window.localStorage;
     return {
         getPhotoPosts: function (skip = 0, top = 8, filterConfig) {
             if (typeof skip !== 'number' || typeof top !== 'number') {
                 console.log("typeError in getPhotoPosts");
                 return;
             }
+            //photoPosts = JSON.parse(window.localStorage.posts, function (key, value) {
+              //  if (key == 'createdAt') return new Date(value);
+                //return value;
+            //});
             if (filterConfig === undefined) {
                 return photoPosts.slice(skip, skip + top);
             } else {
@@ -149,8 +146,13 @@ window.funcModul = (function () {
         },
         addPhotoPost: function (photoPost) {
             if (this.validatePhotoPost(photoPost) && photoPosts.findIndex(elem => elem.id === photoPost.id) === -1) {
+                //photoPosts = JSON.parse(window.localStorage.posts, function (key, value) {
+                  //  if (key == 'createdAt') return new Date(value);
+                    //return value;
+                //});
                 photoPosts.push(photoPost);
                 photoPosts.sort((elem1, elem2) => elem2.createdAt - elem1.createdAt);
+                //localStorage.setItem('posts', JSON.stringify(photoPosts));
                 return true;
             }
             else {
@@ -179,9 +181,14 @@ window.funcModul = (function () {
             if (this.validateEditedPost(photoPost)) {
                 let index = photoPosts.findIndex(elem => elem.id == id);
                 if (index !== -1) {
-                    if (photoPost.description) photoPosts[index].description = photoPost.description;
-                    if (photoPost.photoLink) photoPosts[index].photoLink = photoPost.photoLink;
-                    if (photoPost.hashtags) photoPosts[index].hashtags = photoPost.hashtags;
+                    //photoPosts = JSON.parse(window.localStorage.posts, function (key, value) {
+                      //  if (key == 'createdAt') return new Date(value);
+                        //return value;
+                    //});
+                    if (photoPost.description) {photoPosts[index].description = photoPost.description;}
+                    if (photoPost.hashtags) {photoPosts[index].hashtags = photoPost.hashtags;}
+                    if(photoPost.photoLink) {photoPosts[index].photoLink = photoPost.photoLink;}
+                    //window.localStorage.setItem('posts', JSON.stringify(photoPosts));
                     return true;
                 }
             }
@@ -190,7 +197,12 @@ window.funcModul = (function () {
         removePhotoPost: function (id) {
             let index = photoPosts.findIndex(elem => elem.id == id);
             if (index !== -1) {
+                //photoPosts = JSON.parse(window.localStorage.posts, function (key, value) {
+                  //  if (key == 'createdAt') return new Date(value);
+                    //return value;
+                //});
                 photoPosts.splice(index, 1);
+                //window.localStorage.setItem('posts', JSON.stringify(photoPosts));
                 return true;
             } else return false;
         }

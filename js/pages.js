@@ -1,86 +1,169 @@
-window.setPage = (function () {
+window.getHTML = (function () {
     return {
-        MainPage: function () {
-            document.body.innerHTML = `
+        HeaderFooter: function () {
+            return `
             <header>
-                <a href="#" class="logo">
+                <a href="#" onclick="getPhotoPosts()" class="logo">
                     <div>
                         <div class="icon">
                             <img src="img/icon.png">
                         </div>
-                        <span class="logoText">PhotoCloud</span>
+                        <span class="logo-text">PhotoCloud</span>
                     </div>
                 </a>
-                <div class="addPhoto">
-                    <a class="addButton" href="#">Добавить фото</a>
+                <div class="add-photo">
+                    <a class="add-button" onclick="setAddPostPage()" href="#">Добавить фото</a>
                 </div>
-                <div class="userName">
-                    <div class="userNameShort"></div>
-                    <div class="userNameFull"></div>
-                    <a class="sign" href="#" onclick="setPage.LogInPage();">
+                <div class="user-name">
+                    <div class="user-name-short"></div>
+                    <div class="user-name-full"></div>
+                    <a class="sign" href="#" onclick="setLogInPage();">
                         <i class="fa fa-sign-in signicon2 fa-3x" aria-hidden="true"></i>
                     </a>
                 </div>
             </header>
+            
+            <footer>
+                <div class="copyright">
+                    <p>© 2018 PhotoCloud.by</p>
+                    <p>Последние изменения:
+                        <span class=footer-text1>11.03.2018</span>
+                    </p>
+                    <p class="footer-text2">20.03.2018</p>
+                </div>
+                <div class="editor-info">
+                    <p>Сидорова Яна</p>
+                    <p>2 курс, 5 группа</p>
+                    <p>jana.ru.sidorova@yandex.ru</p>
+                </div>
+            </footer>`;
+        },
+        MainPage: function () {
+            return `
             <div class="search">
-                <div class="searchAuthorHashtag">
+                <div class="search-author-hashtag">
                     <input type="text" maxlength="50" placeholder="Автор" class="inputs">
                     <input type="text" maxlength="50" placeholder="Хэштеги" class="inputs">
                 </div>
-                <div class="searchDate">
+                <div class="search-date">
                     <i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
-                    <div class="inputDate">
+                    <div class="input-date">
                         <input maxlength="20" type="date">
                     </div>
                 </div>
                 <button type="submit"></button>
             </div>
             <div class="content">
-
             </div>
-            <button class="loadMoreButton" onclick="loadMore(this)">Загрузить еще</button>
-            <footer>
-                <div class="copyright">
-                    <p>© 2018 PhotoCloud.by</p>
-                    <p>Последние изменения:
-                        <span class=footerText1>11.03.2018</span>
-                    </p>
-                    <p class="footerText2">20.03.2018</p>
-                </div>
-                <div class="editorInfo">
-                    <p>Сидорова Яна</p>
-                    <p>2 курс, 5 группа</p>
-                    <p>jana.ru.sidorova@yandex.ru</p>
-                </div>
-            </footer>`;
-            document.querySelector('html').style.height = 'auto';
-            domModul.setContent();
-            getPhotoPosts();
-            return true;
+            <button class="load-more-button" onclick="loadMore(this)">Загрузить еще</button>
+            `;
         },
         AddPostPage: function () {
-
-        },
-        EditPostPage: function () {
-
-        },
-        LogInPage: function () {
-            document.querySelector('html').style.height = '100%';
-            document.querySelector('body').style.height = '100%';
-            document.body.innerHTML = `
-            <div class="main">
-                <img src="img/icon.png" class="icon-link" onclick="setPage.MainPage();"/>
-                <div class="input-block">
-                    <div class="text-log-in"><span>ВХОД</span></div>
-                    <input class="input-name" id="input_name" type="text" maxlength="50" placeholder="Логин">
-                    <input class="input-password" id="input_password" type="password" maxlength="30" minlength="6" placeholder="Пароль">    
-                    <div class="for-button">
-                        <a href="#" onclick="signIn();">Вход</a>
-                        <a href="#" onclick="signUp();">Регистрация</a>
+            return `
+            <div class="add-form">
+                <div class="photo-form">
+                    <div class="addphoto-image">
+                        <img src="img/addPhoto.jpg" class="addphoto-image-size">
+                            <a href="#" onclick="">
+                                <div class="plus" onclick="getFile()">
+                                    <input type="file" id="img-upload" onchange="updateImageDisplay();" accept="image/*" required />
+                                    <span>+</span>
+                                </div>
+                            </a>
+                        </img>
                     </div>
                 </div>
+                <div class="description-form">
+                    <span class="to-do-info">Описание:</span>
+                    <textarea id="text-form" placeholder="Не более 200 символов:)" maxlength="200" cols="40" rows="10" required></textarea>
+                    <input class="submit-button" type="submit" onclick="addPhoto();" value="Добавить">
+                </div>
+            </div>
+            `;
+        },
+        EditPostPage: function () {
+            return `
+            <div class="add-form">
+                <div class="photo-form">
+                    <div class="addphoto-image">
+                        <img src="" class="addphoto-image-size">
+                            <a href="#" onclick="">
+                                <div class="plus" onclick="getFile()">
+                                    <input type="file" id="img-upload" onchange="updateImageDisplay();" accept="image/*" required />
+                                    <span>+</span>
+                                </div>
+                            </a>
+                        </img>
+                    </div>
+                </div>
+                <div class="description-form">
+                    <span class="to-do-info">Описание:</span>
+                    <textarea id="text-form" placeholder="Не более 200 символов:)" maxlength="200" cols="40" rows="10" required></textarea>
+                    <input class="submit-button" type="submit" onclick="editPhoto();" value="Сохранить">
+                </div>
+            </div>
+            `;
+        },
+        LogInPage: function () {
+            return `
+            <div class="main">
+                <img src="img/icon.png" class="icon-link" onclick="setMainPage();"/>
+                <div class="input-block">
+                    <div class="text-log-in"><span>ВХОД</span></div>
+                    <form onsubmit="signIn()">
+                        <input class="input-name" type="text" id="input_name" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{4,20}$" title="Вы ввели запрещенный символ! Только латиница и цифры." placeholder="Логин" required>
+                        <input class="input-password" id="input_password" type="password" maxlength="30" minlength="6" placeholder="Пароль" required>    
+                        <div type="submit" class="for-button">
+                            <button type='submit'>Войти</button>
+                        </div>
+                    </form>
+                </div>
             </div>`;
-            return true;
         }
     }
 })();
+function setMainPage() {
+    document.body.innerHTML = getHTML.HeaderFooter();
+    let mainContainer = document.createElement('div');
+    mainContainer.className = 'main-container';
+    mainContainer.innerHTML = getHTML.MainPage();
+    document.body.insertBefore(mainContainer, document.querySelector('footer'));
+    domModul.setContent();
+    getPhotoPosts();
+}
+function setLogInPage() {
+    document.body.innerHTML = getHTML.LogInPage();
+}
+function setAddPostPage() {
+    document.querySelector('.add-button').style.display = 'none';
+    document.querySelector('.main-container').className = 'add-main-container';
+    document.querySelector('.add-main-container').innerHTML = getHTML.AddPostPage();
+    document.querySelector('.logo').setAttribute('onclick', 'setMainPageFromAddEdit()');
+}
+function setMainPageFromAddEdit() {
+    document.querySelector('.add-main-container').className = 'main-container';
+    document.querySelector('.main-container').innerHTML = getHTML.MainPage();
+    document.querySelector('.add-button').style.display = 'flex';
+    domModul.setContent();
+    getPhotoPosts();
+}
+function setEditPostPage(post){
+    const photoPost = post.parentNode.parentNode;
+    const photoLink = photoPost.querySelector('.image-position').src;
+    const description = photoPost.querySelector('.text-info').innerHTML;
+    
+    document.querySelector('.add-button').style.display = 'none';
+    document.querySelector('.main-container').className = 'add-main-container';
+    document.querySelector('.add-main-container').id = post.parentNode.parentNode.id;
+    document.querySelector('.add-main-container').innerHTML = getHTML.EditPostPage();
+    document.querySelector('.addphoto-image-size').src = photoLink;
+    document.querySelector('.logo').setAttribute('onclick', 'setMainPageFromAddEdit()');
+    document.getElementById('text-form').innerHTML = description;
+}
+
+console.log("Фильтрация");
+console.log("Баг с входом в два слова");
+console.log("Кнопка логаута в адд/едит");
+console.log("лайки");
+console.log("Вывод сообщения при ошибке адд/едит");
+console.log("Вывод вопроса о согласии на удаление");
