@@ -16,7 +16,6 @@
     flex-direction: row;
     width: 80%;
     height: 600px;
-    
     border-radius:20px;
     border: 2px solid; 
     padding: 20px;
@@ -102,6 +101,7 @@
     background-color: white;
     white-space: pre-wrap;
     resize: none;
+    padding: 5px;
 }
 .submit-button{
     line-height: 40px;
@@ -148,8 +148,40 @@
         top: 45%;
     }
 }
-/* @media(max-height: 750px){
-    .add-form{
-        height: 500px;
-    }
-} */
+.agreement{
+    z-index: 5;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.541);
+}
+.agreement-block{
+    z-index: 6;
+    height: 150px;
+    width: 300px;
+    padding-bottom: 10px;
+    border: 1px solid gray;
+    border-radius: 20px; 
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+}
+.agreement-block p{
+    font-family: serif;
+    font-size: 20px;
+    text-align: center;
+}
+.agree-button{
+    height: 50px;
+    width: 60%;
+    color: white;
+    background-color: black;
+    border-radius: 10px; 
+}

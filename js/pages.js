@@ -3,7 +3,7 @@ window.getHTML = (function () {
         HeaderFooter: function () {
             return `
             <header>
-                <a href="#" onclick="getPhotoPosts()" class="logo">
+                <a href="#" onclick="reloadMain()" class="logo">
                     <div>
                         <div class="icon">
                             <img src="img/icon.png">
@@ -42,20 +42,39 @@ window.getHTML = (function () {
             return `
             <div class="search">
                 <div class="search-author-hashtag">
-                    <input type="text" maxlength="50" placeholder="Автор" class="inputs">
-                    <input type="text" maxlength="50" placeholder="Хэштеги" class="inputs">
+                    <input type="text" maxlength="50" placeholder="Автор" class="input1">
+                    <input type="text" maxlength="50" placeholder="Хэштеги" class="input2">
                 </div>
                 <div class="search-date">
                     <i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
                     <div class="input-date">
-                        <input maxlength="20" type="date">
+                        <input maxlength="20" type="date" class="input3">
                     </div>
                 </div>
-                <button type="submit"></button>
+                <button type="submit" onclick="setFilterConfig()"></button>
             </div>
             <div class="content">
             </div>
             <button class="load-more-button" onclick="loadMore(this)">Загрузить еще</button>
+            `;
+        },
+        QuestionPage: function () {
+            return `
+                <div class="question-inner">
+                    <p>Вы хотите удалить данный пост?</p>
+                    <div class="choose">
+                        <button onclick="deleteOk()" class="delete-button">Удалить</button>
+                        <button onclick="deleteCancel()" class="cancel-button">Отмена</button> 
+                    </div>
+                </div>
+            `;
+        },
+        AgreePage: function () {
+            return `
+                <div class="agreement-block">
+                    <p class="agree-info">Проверьте корректность <br>введенных данных</p>
+                    <button onclick="agreeOk()" class="agree-button">Хорошо</button> 
+                </div>
             `;
         },
         AddPostPage: function () {
@@ -129,22 +148,26 @@ function setMainPage() {
     mainContainer.innerHTML = getHTML.MainPage();
     document.body.insertBefore(mainContainer, document.querySelector('footer'));
     domModul.setContent();
+    //document.querySelector('.load-more-button').style.display='block';
     getPhotoPosts();
 }
 function setLogInPage() {
     document.body.innerHTML = getHTML.LogInPage();
+    domModul.setFilter();
 }
 function setAddPostPage() {
     document.querySelector('.add-button').style.display = 'none';
-    document.querySelector('.sign').setAttribute('onclick', 'logOutFromAddEdit');
+    document.querySelector('.sign').setAttribute('onclick', 'logOutFromAddEdit()');
     document.querySelector('.main-container').className = 'add-main-container';
     document.querySelector('.add-main-container').innerHTML = getHTML.AddPostPage();
     document.querySelector('.logo').setAttribute('onclick', 'setMainPageFromAddEdit()');
+    domModul.setFilter();
 }
 function setMainPageFromAddEdit() {
     document.querySelector('.add-main-container').className = 'main-container';
     document.querySelector('.main-container').innerHTML = getHTML.MainPage();
     document.querySelector('.add-button').style.display = 'flex';
+    document.querySelector('.logo').setAttribute('onclick', 'reloadMain()');
     domModul.setContent();
     getPhotoPosts();
 }
@@ -156,13 +179,30 @@ function setEditPostPage(post) {
     document.querySelector('.main-container').className = 'add-main-container';
     document.querySelector('.add-main-container').id = post.parentNode.parentNode.id;
     document.querySelector('.add-main-container').innerHTML = getHTML.EditPostPage();
-    document.querySelector('.sign').setAttribute('onclick', 'logOutFromAddEdit');
+    document.querySelector('.sign').setAttribute('onclick', 'logOutFromAddEdit()');
     document.querySelector('.addphoto-image-size').src = photoLink;
     document.querySelector('.logo').setAttribute('onclick', 'setMainPageFromAddEdit()');
     document.getElementById('text-form').innerHTML = description;
     document.getElementById('img-upload').value = '';
 }
+function setQuestionPage() {
+    let question = document.createElement('div');
+    question.className = 'question';
+    question.innerHTML = getHTML.QuestionPage();
+    document.querySelector('.main-container').appendChild(question);
+}
+function setAgreementPage() {
+    let agreement = document.createElement('div');
+    agreement.className = 'agreement';
+    agreement.innerHTML = getHTML.AgreePage();
+    document.querySelector('.add-main-container').appendChild(agreement);
+}
+function setAgreementPageinMain() {
+    let agreement = document.createElement('div');
+    agreement.className = 'agreement';
+    agreement.innerHTML = getHTML.AgreePage();
+    document.querySelector('.main-container').appendChild(agreement);
+    document.querySelector('.agree-info').textContent = "Войдите в систему";
+}
 
-console.log("Фильтрация");
-console.log("Кнопка логаута в адд/едит");
-console.log("лайки");
+console.log("Поле ввода ссылки");

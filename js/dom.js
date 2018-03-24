@@ -8,7 +8,7 @@ var options = {
 window.domModul = (function () {
     let user = null;
     let userShort = null;
-    let filterConfig;
+    let filter;
     let content;
     return {
         setContent: function () {
@@ -41,7 +41,7 @@ window.domModul = (function () {
         },
         changeUser: function (username) {
             if (username === null || typeof username === undefined) {
-                user = username;
+                user = null;
                 document.getElementsByClassName('sign')[0].setAttribute('onclick', 'setLogInPage()');
                 document.getElementsByClassName('sign')[0].innerHTML = '<i class="fa fa-sign-in signicon2 fa-3x" aria-hidden="true"></i>';
                 document.getElementsByClassName('user-name-short')[0].style.display = 'none';
@@ -78,15 +78,24 @@ window.domModul = (function () {
         getUser: function () {
             return user;
         },
+        setUser: function () {
+            if (localStorage.getItem('user') === 'undefined') {
+                this.changeUser(null);
+            }
+            else this.changeUser(localStorage.getItem('user'));
+        },
+        setFilter: function (newFilter) {
+            filter = newFilter;
+        },
         createPost: function (post) {
             let div = document.createElement('div');
             div.id = post.id;
             div.className = "post";
-            let heart = '<i class="fa fa-heart-o fa-2x" aria-hidden="true">' + post.likes.length + '</i>';
+            let heart = '<i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>';
             if (user) {
                 post.likes.forEach((elem) => {
                     if (elem === user)
-                        heart = '<i class="fa fa-heart fa-2x heart" aria-hidden="true">' + post.likes.length + '</i>';
+                        heart = '<i class="fa fa-heart fa-2x heart" aria-hidden="true"></i>';
                 });
             }
             let isOwner =
@@ -101,8 +110,15 @@ window.domModul = (function () {
             div.innerHTML = `
                 <img class="image-position" src="` + post.photoLink + `" alt="photo">
                 <div class="image-owner-data-info">
-                    <span class="user-name-label">` + post.author + ' | ' + post.createdAt.toLocaleString("ru", options) + '</span>' +
-                    heart + `
+                    <span class="user-name-label">` + post.author + ' | ' + post.createdAt.toLocaleString("ru", options) + `</span>
+                    <div class="likes">
+                        <a class="heart-div" href="#" onclick="likeIt(this)">`
+                + heart + `
+                        </a>
+                        <div class="likes-count">
+                            <span class="count-of-likes">`+ post.likes.length + `</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="image-text">
                     <p class="text-info">` + post.description + `</p>
@@ -112,14 +128,15 @@ window.domModul = (function () {
         },
         addPost: function (post) {
             if (funcModul.addPhotoPost(post)) {
-                content.innerHTML = '';
-                this.getPosts();
                 return true;
             }
             return false;
         },
         getPosts: function (skip = 0, top = 8, filterConfig) {
+            if (filter && !filterConfig) filterConfig = filter;
+            document.querySelector('.load-more-button').style.display = 'block';
             let posts = funcModul.getPhotoPosts(skip, top, filterConfig);
+            filter = filterConfig;
             posts.forEach((elem) => {
                 content.appendChild(this.createPost(elem));
             });
@@ -127,7 +144,7 @@ window.domModul = (function () {
         editPost: function (id, post) {
             if (funcModul.editPhotoPost(id, post)) {
                 setMainPageFromAddEdit();
-                //content.replaceChild(this.createPost(funcModul.getPhotoPost(id)), document.getElementById(id));
+                document.querySelector('.sign').setAttribute('onclick', 'logOut();');
                 return true;
             }
             return false;
@@ -161,4 +178,4 @@ function removePhotoPost(id) {
 }
 
 setMainPage();
-domModul.changeUser("KateK");
+domModul.setUser();
