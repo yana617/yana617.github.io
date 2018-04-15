@@ -1,0 +1,24 @@
+{
+  "name": "up-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yana617/yana617.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yana617/yana617.github.io/issues"
+  },
+  "homepage": "https://github.com/yana617/yana617.github.io#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "multer": "^1.3.0",
+    "whatwg-fetch": "^2.0.4"
+  }
+}
